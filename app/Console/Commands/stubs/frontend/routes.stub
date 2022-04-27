@@ -1,5 +1,5 @@
 // Laravel Route
-Route::resource('dummy-resources', C\DummyResourceWithSlashController::class);
+Route::resource('dummy-resources', Admins\DummyResourceWithSlashController::class);
 
 // Vue Route
 'dummy-resources': () => import('@v/dummy-resources/Index'),
