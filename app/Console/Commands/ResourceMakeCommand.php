@@ -199,7 +199,7 @@ class ResourceMakeCommand extends GeneratorCommand
                 $this->line($content);
             } else {
                 $relativePath = str_replace('dummy-resources', $pluralKebabDummyResource, $this->frontendTypePathMap[$type]);
-                $path = $this->laravel['path.resources'] . '/admin/src/' . $relativePath;
+                $path = $this->laravel['path.resources'] . '/js/admin/' . $relativePath;
 
                 if (! $this->option('force') && $this->files->exists($path)) {
                     $this->error($relativePath . ' already exists!');
