@@ -1,0 +1,57 @@
+<?php
+
+namespace DummyNamespace;
+
+use NamespacedDummyFilter;
+use NamespacedDummyModel;
+use NamespacedDummyRequest;
+use NamespacedDummyResource;
+use Illuminate\Http\Request;
+
+class DummyClass extends Controller
+{
+    public function index(DummyFilter $filter)
+    {
+        $dummyModels = DummyModel::query()->filter($filter)->paginate();
+        $resource = DummyResource::collection($dummyModels);
+
+        return $this->ok($resource);
+    }
+
+    public function create()
+    {
+        return $this->ok();
+    }
+
+    public function store(DummyRequest $request)
+    {
+        $inputs = $request->validated();
+        $dummyModel = DummyModel::create($inputs);
+        $resource = DummyResource::make($dummyModel);
+
+        return $this->created($resource);
+    }
+
+    public function edit(Request $request, DummyModel $dummyModel)
+    {
+        $resource = DummyResource::make($dummyModel);
+
+        return $this->ok($resource);
+    }
+
+    public function update(DummyRequest $request, DummyModel $dummyModel)
+    {
+        $inputs = $request->validated();
+        $dummyModel->update($inputs);
+        $resource = DummyResource::make($dummyModel);
+
+        return $this->created($resource);
+    }
+
+    public function destroy(DummyModel $dummyModel)
+    {
+        $dummyModel->delete();
+
+        return $this->noContent();
+    }
+}
