@@ -27,7 +27,7 @@ It can generate front-end and back-end files for adding, deleting, modifying and
 - Modify database connection configuration in `.env` file
 - `php artisan key:generate`
 - `php artisan migrate`
-- `php artisan admin:init`
+- `php artisan admin:install`
 - `npm install && npm run build`
 
 ## Nginx Configuration
